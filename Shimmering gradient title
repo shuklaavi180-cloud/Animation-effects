@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><style>
+body{background:#0b1020;color:#fff;display:grid;place-items:center;min-height:100vh;margin:0}
+.stage{position:relative;width:360px;height:220px;display:grid;place-items:center}
+.shimmer{font:800 28px system-ui;margin:0;white-space:nowrap;background:linear-gradient(90deg,#fff,#5eead4,#a78bfa,#fff);
+  background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:shimmer 4s linear infinite}
+@keyframes shimmer{to{background-position:-250% 0}}
+</style></head><body>
+<div class="stage">
+<h3 class="shimmer">Library of Tomorrow</h3>
+</div>
+</body></html>
