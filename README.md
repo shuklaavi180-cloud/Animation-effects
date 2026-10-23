@@ -1,5 +1,5 @@
 # Animation-effects
-12 cool animations in plain HTML, CSS and JavaScript. Press Show code under any card, then Copy to get a complete snippet you can paste into an .html file.
+ cool animations in plain HTML, CSS and JavaScript. Press Show code under any card, then Copy to get a complete snippet you can paste into an .html file.
 <!DOCTYPE html>
 <html><head><meta charset="utf-8"><style>
 body{background:#0b1020;color:#fff;display:grid;place-items:center;min-height:100vh;margin:0}
