@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><style>
+body{background:#0b1020;color:#fff;display:grid;place-items:center;min-height:100vh;margin:0}
+.stage{position:relative;width:360px;height:220px;display:grid;place-items:center}
+.net{position:absolute;inset:0;width:100%;height:100%}
+</style></head><body>
+<div class="stage">
+<canvas class="net"></canvas>
+</div>
+<script>
+const root=document.querySelector(".stage");
+const cv=root.querySelector('canvas'),ctx=cv.getContext('2d');
+let w,h,m={x:-999,y:-999};
+function size(){const r=cv.getBoundingClientRect();w=cv.width=r.width;h=cv.height=r.height}size();
+const dots=Array.from({length:45},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.8,vy:(Math.random()-.5)*.8}));
+cv.addEventListener('pointermove',e=>{const r=cv.getBoundingClientRect();m.x=e.clientX-r.left;m.y=e.clientY-r.top});
+cv.addEventListener('pointerleave',()=>m.x=-999);
+(function f(){ctx.clearRect(0,0,w,h);
+ for(const d of dots){const dx=d.x-m.x,dy=d.y-m.y,k=Math.hypot(dx,dy);if(k<70){d.x+=dx/k*2;d.y+=dy/k*2}
+  d.x+=d.vx;d.y+=d.vy;if(d.x<0||d.x>w)d.vx*=-1;if(d.y<0||d.y>h)d.vy*=-1;
+  ctx.fillStyle='#5eead4';ctx.beginPath();ctx.arc(d.x,d.y,2,0,7);ctx.fill();}
+ for(let i=0;i<dots.length;i++)for(let j=i+1;j<dots.length;j++){const a=dots[i],b=dots[j],k=Math.hypot(a.x-b.x,a.y-b.y);
+  if(k<80){ctx.strokeStyle='rgba(125,211,252,'+(.5*(1-k/80))+')';ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}}
+ if(root.isConnected)requestAnimationFrame(f)})();
+</script>
+</body></html>
